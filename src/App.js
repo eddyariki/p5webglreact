@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import p5 from 'p5'
 import vert from './feedback.vert'
-import frag from './feedback.frag'
+import frag from './feedback_1.frag'
 
 
 export default class App extends Component {
@@ -47,14 +47,19 @@ export default class App extends Component {
             //we send the shader prevImg as a 2d texture so we can 
             //read the values inside the shader
             feedbackShader.setUniform("texsize", [prevImg.width,prevImg.height])
+            feedbackShader.setUniform("time", p.millis()/1000)
             feedbackShader.setUniform("prevtex", prevImg)
+            feedbackShader.setUniform("mouse", [p.mouseX,p.mouseY])
 
             //we need a rect for frag shader to draw onto
             currImg.rect(-w/2,-h/2,w,h)
 
             //copy the currImg and set it as previous
             prevImg.image(currImg, 0,0,w,h)
-
+            if(p.mouseIsPressed){
+                prevImg.fill(200);
+                prevImg.ellipse(p.mouseX, p.mouseY,30,30);
+            }
             //show the results
             p.image(currImg, -w/2,-h/2,w,h)
         }

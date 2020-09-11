@@ -26,7 +26,7 @@ void main() {
     }
     total /=9.0;
     float rn = random(uv);
-    if(total.x > 0.1 && rn > 0.6){
+    if(total.x > 0.08 && rn > 0.590){
         col = vec3(1.0);
     }else{
        col *=0.96;
