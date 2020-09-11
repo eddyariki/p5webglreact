@@ -63,7 +63,7 @@ void main() {
     total/=9.0;
     float rn = random(uv);
 
-    if(total.x > 0.01 && rn>0.52  &&2.0*noise(1.0*uv + time*0.5)-rn*noise(3.0*uv - time*0.5)>0.83){
+    if(total.x > 0.01 && rn>0.56  &&2.0*noise(1.0*uv + time*0.5)-rn*noise(3.0*uv - time*0.5)>0.83){
         col = vec3(1.2-1.9*minDist);
 
     }else{
